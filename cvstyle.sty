@@ -1,0 +1,101 @@
+%============================================================
+%  cvstyle.sty -- shared style for cv.tex and resume.tex
+%  Both documents load this file, so fonts, headings, entries,
+%  dates and lists are identical across the pair.
+%  Requires XeLaTeX or LuaLaTeX (uses fontspec).
+%============================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cvstyle}[2026/10/04 Shared CV and resume style]
+
+\RequirePackage{iftex}
+\RequireTUTeX  % stop with a clear message under pdfLaTeX
+
+\RequirePackage{fontspec}
+\RequirePackage{geometry}      % paper size from \documentclass; margins set per document
+\RequirePackage{xcolor}
+\RequirePackage{hyperref}
+\RequirePackage{microtype}
+\RequirePackage{enumitem}
+\RequirePackage{titlesec}
+\RequirePackage{url}
+
+%---------------- Font ----------------
+% Libertinus Serif (ships with TeX Live and Overleaf); falls back if absent.
+\IfFontExistsTF{LibertinusSerif-Regular.otf}{%
+  \setmainfont{LibertinusSerif}[
+    Extension      = .otf,
+    UprightFont    = *-Regular,
+    ItalicFont     = *-Italic,
+    BoldFont       = *-Semibold,
+    BoldItalicFont = *-SemiboldItalic,
+    SmallCapsFeatures = {Letters=SmallCaps},
+  ]%
+}{%
+  \IfFontExistsTF{Liberation Serif}{\setmainfont{Liberation Serif}}{\setmainfont{Times New Roman}}%
+}
+
+%---------------- Colors and links ----------------
+\definecolor{cvlinkcolor}{RGB}{20,70,130}
+\definecolor{cvgray}{gray}{0.45}
+\definecolor{cvrulegray}{gray}{0.62}
+\hypersetup{colorlinks=true, linkcolor=cvlinkcolor, urlcolor=cvlinkcolor,
+  citecolor=cvlinkcolor}
+\urlstyle{same}
+\Urlmuskip=0mu plus 1mu\relax
+
+%---------------- Paragraphs and lists ----------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt plus 1pt minus 1pt}
+\setlist[itemize]{label=\textbullet, leftmargin=1.2em, labelsep=0.5em,
+  topsep=2pt, itemsep=1pt, parsep=0pt, partopsep=0pt}
+\setlist[enumerate]{leftmargin=*, topsep=2pt, itemsep=3pt, parsep=0pt, partopsep=0pt}
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+
+%---------------- Section headings ----------------
+% Small caps, letterspaced, followed by a hairline rule to the margin.
+\newcommand{\cv@secline}[1]{%
+  \hbox to \linewidth{{\normalfont\large\scshape #1}%
+    \hspace{0.6em}\leaders\hrule height 0.33em depth -0.29em\hfil}}
+\titleformat{\section}{\normalfont}{}{0em}{\cv@secline}
+\titlespacing*{\section}{0pt}{0.9em}{-0.25em}
+\titleformat{\subsection}{\normalfont\normalsize\itshape}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{0.6em}{0.2em}
+
+%---------------- Header ----------------
+% \cvheader{Name}{Headline}{Contact line(s)}
+\newcommand{\cvheader}[3]{%
+  \begin{center}
+    {\LARGE\bfseries\scshape #1}\\[0.3em]
+    {\normalsize #2}\\[0.2em]
+    {\small #3}
+  \end{center}\vspace{-0.4em}}
+% Separator between contact items
+\newcommand{\cvsep}{\unskip\;\textperiodcentered\;\ignorespaces}
+
+%---------------- Entries ----------------
+% Right-aligned text at the end of a line. If the left text wraps, the
+% right text stays on the last line instead of dangling on its own.
+\newcommand{\cv@right}[1]{{\unskip\nobreak\hfil\penalty50\hskip1em\hbox{}%
+  \nobreak\hfill\mbox{#1}\parfillskip=0pt\finalhyphendemerits=0\par}}
+
+% \entry{Organization}{Location}{Role or degree}{Dates}
+%   Organization                                   Location
+%   Role or degree                                    Dates
+\newcommand{\entry}[4]{%
+  \par\addvspace{0.25em}\noindent\textbf{#1}\cv@right{#2}%
+  \nopagebreak\noindent\textit{#3}\cv@right{#4}\nopagebreak}
+
+% \dated{Text}{Date}  --  one line with the date right-aligned
+\newcommand{\dated}[2]{\par\noindent #1\cv@right{#2}}
+
+%---------------- Publications ----------------
+% \begin{publist}{J} ... \end{publist}  numbers items [J1], [J2], ...
+\newenvironment{publist}[1]
+  {\begin{enumerate}[label={[#1\arabic*]}, widest=99]}
+  {\end{enumerate}}
+% Mark your own name in author lists
+\newcommand{\me}[1]{\textbf{#1}}
+
+\endinput

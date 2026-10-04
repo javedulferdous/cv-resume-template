@@ -1,0 +1,90 @@
+%============================================================
+%  One-Page Résumé Template
+%  Compile with XeLaTeX:   xelatex resume.tex
+%  Shares cvstyle.sty with cv.tex. Replace every placeholder.
+%
+%  Conventions used (keep them consistent when you edit):
+%    - Standard section names ATS software recognizes
+%    - Dates as "Mon YYYY -- Mon YYYY" (or "-- Present")
+%    - Locations as "City, ST" (or "City, Country")
+%    - Degrees show the conferral date only ("May 2024" / "Expected May 2026")
+%============================================================
+\documentclass[10pt,letterpaper]{article}   % use a4paper outside North America
+\usepackage{cvstyle}
+\geometry{margin=0.6in, top=0.5in, bottom=0.5in}
+\pagestyle{empty}
+
+\newcommand{\myname}{Your Name}
+\hypersetup{pdftitle={\myname\ -- Resume}, pdfauthor={\myname}}
+
+\begin{document}
+
+%============================== HEADER ==============================
+\cvheader{\myname}{Professional Title}{%
+  City, ST \cvsep
+  +1 555-555-5555 \cvsep
+  \href{mailto:you@example.com}{you@example.com} \cvsep
+  \href{https://linkedin.com/in/your-handle}{linkedin.com/in/your-handle} \cvsep
+  \href{https://github.com/your-handle}{github.com/your-handle}}
+
+%============================= SUMMARY ==============================
+\section*{Summary}
+Two to four sentences: your field, years of experience, core strengths, and the role you
+are targeting. Name the tools or methods you are best known for and one concrete,
+measurable accomplishment.
+
+%============================ EXPERIENCE ============================
+\section*{Experience}
+\entry{Company or University}{City, ST}{Job Title}{Aug 2024 -- Present}
+\begin{itemize}
+  \item Start each bullet with an action verb and end with a measurable result (e.g., cut latency by 30\%).
+  \item Describe scope: team size, number of users, budget, or courses taught.
+\end{itemize}
+
+\entry{Previous Employer}{City, ST}{Job Title}{Jan 2020 -- Jul 2024}
+\begin{itemize}
+  \item Built or led something specific; name the technology and the outcome.
+  \item Collaborated with a named group or partner organization to deliver a project.
+\end{itemize}
+
+%============================ EDUCATION =============================
+\section*{Education}
+\entry{University Name}{City, ST}{Ph.D., Your Field}{May 2024}
+\entry{University Name}{City, ST}{M.S., Your Field}{May 2019}
+\entry{University Name}{City, Country}{B.S., Your Field}{May 2017}
+
+%============================== SKILLS ==============================
+\section*{Skills}
+\begin{itemize}
+  \item \textbf{Programming:} Python, JavaScript, SQL, Java
+  \item \textbf{Frameworks \& Libraries:} Framework A, Framework B, Framework C
+  \item \textbf{Tools \& Platforms:} Git, Docker, Cloud Platform, \LaTeX
+\end{itemize}
+
+%============================= PROJECTS =============================
+\section*{Projects}
+\begin{itemize}
+  \item \textbf{Project Name} (2024) --- What it does, the stack used, and a result metric.
+  \item \textbf{Project Name} (2023) --- One-line description with a number if possible.
+\end{itemize}
+
+%=========================== PUBLICATIONS ===========================
+% Delete this section if it does not apply to you.
+\section*{Publications}
+\begin{itemize}
+  \item \me{Lastname, F.}, Coauthor, A., \& Coauthor, B. (2025). Title of your most
+        important paper. \textit{Journal or Conference Name}.
+  \item \me{Lastname, F.}, \& Coauthor, A. (2023). Title of another paper. \textit{Venue}.
+\end{itemize}
+
+%========================== CERTIFICATIONS ==========================
+\section*{Certifications}
+\dated{Certification Name, Issuing Organization}{Mar 2023}
+\dated{Certification Name, Issuing Organization}{Oct 2021}
+
+%============================== AWARDS ==============================
+\section*{Awards}
+\dated{Name of Fellowship or Award, Granting Institution}{2022}
+\dated{Name of Scholarship, Granting Institution}{2016}
+
+\end{document}

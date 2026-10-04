@@ -1,0 +1,191 @@
+%============================================================
+%  Academic Curriculum Vitae Template
+%  Compile with XeLaTeX, twice (for "page X of Y"):
+%      xelatex cv.tex && xelatex cv.tex
+%  Shares cvstyle.sty with resume.tex. Replace every placeholder;
+%  delete sections you don't need.
+%
+%  Conventions used (keep them consistent when you edit):
+%    - Standard academic section order (Education first, then
+%      Appointments, Publications, Grants, Awards, Teaching, Service)
+%    - Positions dated "Mon YYYY -- Mon YYYY"; one-line items by year
+%    - Degrees show the conferral date only
+%    - Publications in reverse chronological order, APA style,
+%      numbered [J1], [C1], [P1]; your name in bold via \me{}
+%============================================================
+\documentclass[11pt,letterpaper]{article}   % use a4paper outside North America
+\usepackage{cvstyle}
+\geometry{margin=1in, top=0.9in, bottom=0.9in, headsep=16pt}
+
+\newcommand{\myname}{Your Name}
+\hypersetup{pdftitle={\myname\ -- Curriculum Vitae}, pdfauthor={\myname},
+  pdfsubject={Curriculum Vitae}}
+
+% ---- Running head and folio ----
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{needspace}
+\newcommand{\cvrunhead}[1]{{\scshape #1}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\color{cvgray}\cvrunhead{\myname}}
+\fancyhead[R]{\footnotesize\color{cvgray}\cvrunhead{Curriculum Vitae}}
+\fancyfoot[C]{\footnotesize\color{cvgray}\thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\headrule}{\color{cvrulegray}\hrule width\headwidth height\headrulewidth}
+\fancypagestyle{firstpage}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[C]{\footnotesize\color{cvgray}\thepage\ of \pageref{LastPage}}}
+
+\begin{document}
+\thispagestyle{firstpage}
+
+%============================== HEADER ==============================
+\cvheader{\myname}{Current Title, Department, Institution Name}{%
+  City, ST, Country \cvsep
+  \href{mailto:you@example.com}{you@example.com} \cvsep
+  \href{https://example.com}{example.com}\\[0.1em]
+  \href{https://scholar.google.com/}{Google Scholar} \cvsep
+  ORCID: \href{https://orcid.org/0000-0000-0000-0000}{0000-0000-0000-0000} \cvsep
+  \href{https://linkedin.com/in/your-handle}{linkedin.com/in/your-handle}}
+
+%======================== RESEARCH INTERESTS ========================
+\section*{Research Interests}
+Area One; Area Two; Area Three; Area Four.
+
+%=========================== EDUCATION ==============================
+\section*{Education}
+\entry{University Name}{City, ST, Country}{Ph.D., Your Field}{May 2024}
+\begin{itemize}
+  \item Dissertation: \textit{Title of Your Dissertation}
+  \item Advisor: Dr.\ Advisor Name
+\end{itemize}
+
+\entry{University Name}{City, Country}{M.S., Your Field}{May 2019}
+\begin{itemize}
+  \item Thesis: \textit{Title of Your Master's Thesis}
+\end{itemize}
+
+\entry{University Name}{City, Country}{B.S., Your Field}{May 2017}
+\begin{itemize}
+  \item Thesis: \textit{Title of Your Undergraduate Thesis}
+  \item Advisor: Dr.\ Advisor Name
+\end{itemize}
+
+%========================= APPOINTMENTS =============================
+\section*{Academic Appointments}
+\entry{University Name}{City, ST}{Assistant Professor, Department Name}{Aug 2024 -- Present}
+
+%========================= PUBLICATIONS =============================
+\section*{Publications}
+\subsection{Journal Articles}
+\begin{publist}{J}
+  \item \me{Lastname, F.}, Coauthor, A., \& Coauthor, B. (2025).
+  Title of your journal article. \textit{Journal Name}, \textit{12}(3), 45--67.
+  \url{https://doi.org/10.0000/example}
+
+  \item \me{Lastname, F.}, Coauthor, A., \& Coauthor, B. (2023).
+  Title of another journal article. \textit{Journal Name}, \textit{8}(1), 1--20.
+  \url{https://doi.org/10.0000/example}
+\end{publist}
+
+\subsection{Conference Proceedings}
+\begin{publist}{C}
+  \item Coauthor, A., \me{Lastname, F.}, \& Coauthor, B. (2026).
+  Title of an accepted paper. In \textit{Proceedings of the Conference Name (ABBR '26)}.
+  City, Country. [Accepted]
+
+  \item \me{Lastname, F.}, Coauthor, A., \& Coauthor, B. (2024).
+  Title of a conference paper. In \textit{Proceedings of the Conference Name (ABBR '24)}
+  (pp.\ 100--110). \url{https://doi.org/10.0000/example}
+
+  \item Coauthor, A., \me{Lastname, F.}, \& Coauthor, B. (2022).
+  Title of a conference paper. In \textit{Proceedings of the Conference Name (ABBR '22)}.
+  \url{https://doi.org/10.0000/example}
+\end{publist}
+
+\subsection{Preprints and Under Review}
+\begin{publist}{P}
+  \item \me{Lastname, F.}, \& Coauthor, A. (2026). Title of a manuscript. [Under review]
+\end{publist}
+
+%========================= GRANTS AND FUNDING =======================
+\section*{Grants and Funding}
+\dated{\textbf{Project Title}, Sponsor (Program), \$00,000 --- Role: PI}{2025 -- 2027}
+
+%========================= HONORS AND AWARDS ========================
+\section*{Honors and Awards}
+\dated{Name of Fellowship, Granting Institution}{2022}
+\dated{Graduate Teaching Assistantship, University Name}{2019}
+\dated{Name of Scholarship, Granting Institution}{2016}
+
+%======================= RESEARCH EXPERIENCE ========================
+\needspace{8\baselineskip}
+\section*{Research Experience}
+\entry{University Name}{City, ST}{Graduate Researcher, Name of Lab}{Aug 2019 -- May 2024}
+\begin{itemize}
+  \item Describe your main research thread and the problem it addresses.
+  \item Describe the systems you designed, built, or evaluated, and with whom.
+\end{itemize}
+
+\entry{University Name}{City, Country}{Research Assistant, Name of Lab}{Jan 2016 -- Dec 2018}
+\begin{itemize}
+  \item Research topic, methods used, and key output (paper, dataset, tool).
+\end{itemize}
+
+%======================== TEACHING EXPERIENCE =======================
+\needspace{8\baselineskip}
+\section*{Teaching Experience}
+\subsection{Instructor of Record}
+\entry{University Name}{City, ST}{Assistant Professor}{Aug 2024 -- Present}
+\begin{itemize}
+  \item CODE 101: Course Title (Fall 2024)
+  \item CODE 201: Course Title (Spring 2025)
+\end{itemize}
+
+\subsection{Teaching Assistant}
+\entry{University Name}{City, ST}{Graduate Teaching Assistant}{Aug 2019 -- May 2024}
+\begin{itemize}
+  \item CODE 115: Course Title --- labs, grading, and review sessions for 80+ students.
+  \item CODE 355: Course Title --- what you did.
+\end{itemize}
+
+%============================ MENTORING =============================
+\section*{Mentoring}
+\dated{Student Name (M.S.) --- Project topic}{2023}
+\dated{Student Name (B.S.) --- Project topic}{2023}
+
+%=================== INVITED TALKS AND PRESENTATIONS ================
+\section*{Invited Talks and Presentations}
+\dated{``Talk Title,'' Event or Host Institution, City, ST}{2023}
+\dated{``Talk Title,'' Event or Host Institution, City, ST}{2021}
+
+%==================== SERVICE =======================================
+\needspace{8\baselineskip}
+\section*{Professional Service}
+\subsection{Organizing and Program Committees}
+\dated{Associate Chair, Conference Name -- Track}{2025}
+\dated{Program Committee Member, Conference Name -- Track}{2024}
+
+\subsection{Peer Review}
+Journal Name; Journal Name; Conference Name (2023--2025); Conference Name (2024).
+
+\subsection{Departmental and University Service}
+\dated{Committee Name, University Name}{2025 -- Present}
+
+%===================== PROFESSIONAL DEVELOPMENT =====================
+\section*{Certifications and Training}
+\dated{Certification Name, Issuing Organization}{2023}
+\dated{Training Program Name, Institution}{2021}
+
+%====================== PROFESSIONAL MEMBERSHIPS ====================
+\section*{Professional Memberships}
+\dated{Professional Society Name}{2022 -- Present}
+\dated{Special Interest Group Name}{2022 -- Present}
+
+%============================ REFERENCES ============================
+\section*{References}
+Available upon request.
+
+\end{document}
